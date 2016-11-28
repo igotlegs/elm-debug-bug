@@ -11,3 +11,7 @@ yarn run prod
 Or
 
 elm-make --output dist/bundle.js --debug src/client/elm/Main.elm
+
+
+
+The working bundle code can be found from bundle-fixed.js file. 
