@@ -1,7 +1,7 @@
 const express = require('express')
 const argv = require('yargs').argv
-const proxy = require('./http-proxy')
-const logger = require('./logger')
+//const proxy = require('./http-proxy')
+//const logger = require('./logger')
 //const mockDataProvider = require('./mock-data-provider')
 const profiles = require('./profiles')
 
@@ -19,15 +19,15 @@ function startServer(config) {
   if(argv.useMockData) {
     //app.use(config.proxyInterceptPath, mockDataProvider)
   } else {
-    app.use(config.proxyInterceptPath, proxy())
+    //app.use(config.proxyInterceptPath, proxy())
   }
   if(profiles.isDev()) {
-    const useHotReloading = require('./use-hot-reloading')
-    useHotReloading(app)
+    //const useHotReloading = require('./use-hot-reloading')
+    //useHotReloading(app)
   }
 
   app.use(express.static(config.staticDir))
-  app.use(logger.setup({logDirectory: config.logDirectory}))
+  //app.use(logger.setup({logDirectory: config.logDirectory}))
   app.listen(config.port)
 
   console.log(`Using profile: ${profiles.get()}`)
