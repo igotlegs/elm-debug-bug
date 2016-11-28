@@ -1,6 +1,8 @@
 import Html exposing (..)
 import Html.Attributes exposing (..)
 
+import Time exposing (Time, second)
+
 --import Bootstrap
 
 main: Program Never Model Msg
@@ -25,16 +27,17 @@ init =
   in-}
     (Model 0, Cmd.none)
 
+subscriptions: Model -> Sub Msg
 subscriptions model =
   --Bootstrap.subscriptions model.data
-  Sub.none
+  Time.every second (\_-> model.data)
 
 update: Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   {-let
     (data, cmd) = Bootstrap.update msg model.data
   in-}
-    (,) model Cmd.none
+    (,) {model | data = model.data + 1} Cmd.none
 
 view: Model -> Html Msg
 view model =
